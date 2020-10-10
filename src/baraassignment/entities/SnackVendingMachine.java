@@ -14,6 +14,12 @@ import baraassignment.entities.moneyslots.NotesSlot;
 import baraassignment.machineslots.ItemsSlot;
 import baraassignment.machineslots.SnacksSlot;
 
+/**
+ * @author Baraa
+ *
+ * SnackVendingMachine
+ * 
+ */
 public class SnackVendingMachine extends VendingMachine {
 
 	public SnackVendingMachine() {

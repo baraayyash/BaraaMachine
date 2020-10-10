@@ -15,6 +15,12 @@ import baraassignment.factories.MoneyFactory;
 import baraassignment.factories.VendingMachinesFactory;
 
 
+/**
+ * @author Baraa
+ * 
+ * Main entry to the program, responsible for managing the machine and customers. 
+ *
+ */
 public class Main {
 
 	static Scanner sc = new Scanner(System.in);	
@@ -27,12 +33,15 @@ public class Main {
 		try {
 			
 			System.out.println("**************************");
+			// Display list of items, in our case, snacks (name + id)
 			snacksVendingMachine.displayItems();
 			System.out.println("**************************");
 	
 			while (true) {
+				// will get the item id from the user
 				String itemSelected = getSelectedItemFromUser();
 				try {
+					// make the Machine knows which item is selected
 					snacksVendingMachine.selectItem(itemSelected);
 					break;
 				} catch (ProccessAbortedException e) {
@@ -44,9 +53,13 @@ public class Main {
 				}
 			}
 			
+			// Take money from customer
 			insertMoneyUsingSlot(snacksVendingMachine);
 			
+			// Return change to customer of found
 			snacksVendingMachine.returnChange();
+			
+			// Drop the selected item to the storage so the customer can take it
 			snacksVendingMachine.dropItem();
 			
 		} catch (ProccessAbortedException e) {
@@ -82,6 +95,13 @@ public class Main {
 	}
 
 	
+	/**
+	 * @param snacksVendingMachine
+	 * 
+	 * Customer will determine which slot he wants to use
+	 * Money will be inserted using chosen slot 
+	 * 
+	 */
 	private static void insertMoneyUsingSlot(VendingMachine snacksVendingMachine) {
 		 
 		System.out.println();
@@ -127,6 +147,13 @@ public class Main {
 		}
 	}
 
+	
+	/**
+	 * Insert money using coins or notes
+	 * 
+	 * @param price
+	 * @param moneySlot
+	 */
 	private static void insertMoney(double price, MoneySlot moneySlot) {
 		System.out.println("supported money  with Currency " + moneySlot.getCurrency());
 		moneySlot.getAcceptedMoney().forEach( acceptedMoney -> {
@@ -145,6 +172,13 @@ public class Main {
 		
 	}
 
+	
+	/**
+	 * Insert money using cards
+	 * 
+	 * @param price
+	 * @param cardsSlot
+	 */
 	private static void insertMoney(double price, CardsSlot cardsSlot) {
 		System.out.println("supported Cards : " );
 		cardsSlot.getAcceptedCards().forEach( card -> {
@@ -161,6 +195,7 @@ public class Main {
 			card = CardsFactory.getAcceptedCard(input);
 		}
 		
+		// take the money from the card
 		card.charge(price);
 	}
 
