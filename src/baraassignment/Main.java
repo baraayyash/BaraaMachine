@@ -46,6 +46,9 @@ public class Main {
 			
 			insertMoneyUsingSlot(snacksVendingMachine);
 			
+			snacksVendingMachine.returnChange();
+			snacksVendingMachine.dropItem();
+			
 		} catch (ProccessAbortedException e) {
 			System.out.println("!************* Proccess is aborted ***********!");
 			snacksVendingMachine.clean();
@@ -122,10 +125,6 @@ public class Main {
 		} else {
 			insertMoney(snacksVendingMachine.getItemsSlot().getSelectedItem().getPrice(), moneySlot);
 		}
-		
-		snacksVendingMachine.returnChange();
-		snacksVendingMachine.dropItem();
-
 	}
 
 	private static void insertMoney(double price, MoneySlot moneySlot) {
