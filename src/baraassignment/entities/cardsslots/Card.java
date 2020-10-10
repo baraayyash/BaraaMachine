@@ -1,5 +1,6 @@
 package baraassignment.entities.cardsslots;
 
+import baraassignment.entities.coins.Money;
 
 public abstract class Card {
 
@@ -27,4 +28,21 @@ public abstract class Card {
 		this.id = id;
 	}
 	
+    @Override
+    public boolean equals(Object o) {
+  
+        // If the object is compared with itself then return true   
+        if (o == this) { 
+            return true; 
+        } 
+  
+        if (!(o instanceof Money)) { 
+            return false; 
+        } 
+          
+        Card c = (Card) o; 
+          
+        // Compare the data members and return accordingly  
+        return this.getId().equals(c.getId());
+    } 
 }

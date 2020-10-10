@@ -1,5 +1,6 @@
 package baraassignment.entities;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import baraassignment.entities.cardsslots.CardsSlot;
@@ -61,7 +62,8 @@ public abstract class VendingMachine {
 			if (slot.getAmount() == 0) return;
 			double changeToBeReturned = slot.getAmount() - this.getItemsSlot().getSelectedItem().getPrice();
 			if (changeToBeReturned > 0) {
-				System.out.println("please take your change : " + changeToBeReturned);
+				DecimalFormat df = new DecimalFormat("#.#");
+				System.out.println("please take your change : " + df.format(changeToBeReturned));
 			}
 			slot.setAmount(0.0);
 		});

@@ -15,7 +15,7 @@ public abstract class ItemsSlot {
 		int numOfItem = inventory.get(item);
 		inventory.put(item, --numOfItem);
 		
-		System.out.println("please take the item " + item.getName() + "from storage case");
+		System.out.println("please take the item " + item.getName() + " from storage case ");
 		this.setSelectedItem(null);
 	}
 

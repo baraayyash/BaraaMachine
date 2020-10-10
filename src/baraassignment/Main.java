@@ -143,7 +143,6 @@ public class Main {
 			moneySlot.insert(money);
 		}
 		
-		System.out.println("supported money  with Currency " + moneySlot.getCurrency());
 	}
 
 	private static void insertMoney(double price, CardsSlot cardsSlot) {
